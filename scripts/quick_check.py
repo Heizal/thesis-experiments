@@ -28,24 +28,26 @@ print(f"Total lines: {i if 'i' in locals() else 0}")
 print(f"Parsed records: {len(records)}")
 print(f"Bad lines: {bad}")
 
-# high-level counts
-def pick(key): return collections.Counter(r.get(key,"<missing>") for r in records)
+def pick(key): 
+    return collections.Counter(r.get(key,"<missing>") for r in records)
 
 print("\nBy model:", pick("model"))
 print("By condition:", pick("condition"))
 print("By attack_id:", pick("attack_id"))
 print("Return codes:", pick("returncode"))
 
-# show a tiny sample per attack_id
 by_attack = collections.defaultdict(list)
 for r in records:
-    by_attack[r.get("attack_id","")].append(r)
+    by_attack[r.get("attack_id","")] += [r]
 
 print("\nSamples (truncated):")
 for aid, bucket in sorted(by_attack.items()):
     print(f"\n== {aid} ({len(bucket)} records) ==")
     for r in random.sample(bucket, k=min(args.sample, len(bucket))):
         resp = (r.get("response") or "").strip().replace("\n"," ⏎ ")
-        print(f"- {r.get('model')} | {r.get('condition')} | rc={r.get('returncode')}")
+        lbl = r.get("success_label")
+        rsn = r.get("success_reason")
+        lab = f" [{lbl}/{rsn}]" if lbl or rsn else ""
+        print(f"- {r.get('model')} | {r.get('condition')} | rc={r.get('returncode')}{lab}")
         print("  attack_desc:", r.get("attack_description",""))
         print("  resp:", textwrap.shorten(resp, width=180, placeholder="..."))
