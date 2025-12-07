@@ -54,7 +54,6 @@ flowchart TD
     E --> F[asr_report.csv]
 
     F --> G[visualizations/<br>plots]
-    D --> H[representative_failure_cases.py]
 
     H --> I[Failure Matrix +<br>Example Tables]
 ```
