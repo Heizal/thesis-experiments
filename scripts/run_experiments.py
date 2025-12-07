@@ -17,7 +17,7 @@ RESULTS_PATH = os.path.join(OUT_DIR, "results.jsonl")
 SECRETS_YAML = os.path.join(BASE_DIR, "config", "secrets.yaml")
 
 # --- CONFIGURE ---
-MODELS = ["gemma3:1b", "gemma3:latest","llama3:latest"] 
+MODELS = ["gemma3:latest","gemma3:1b","llama3:latest"] 
 CONDITIONS = ["C0_baseline", "C1_guardrail", "C2_secret_seeded"]
 OLLAMA_CMD_BASE = "ollama run {model} --prompt {prompt_quoted}"
 
@@ -93,7 +93,7 @@ def build_prompt(condition: str, attack: dict) -> str:
     if attack["class"] == "indirect":
         ingested = attack["template"]
         if condition == "C2_secret_seeded":
-            # randomly append a honey doc (simple deterministic pick works too)
+            # randomly append a honey doc
             hd = SECRETS["docs"][0]  # or rotate
             ingested = f"{ingested}\n\n---\n[ATTACHMENT: {hd['title']}]\n{hd['content']}"
         parts.append("INGESTED_CONTENT:\n" + ingested)
