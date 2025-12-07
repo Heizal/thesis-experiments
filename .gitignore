@@ -1,0 +1,12 @@
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+
+# Experiment outputs (very large, DO NOT TRACK)
+results.jsonl
+
+# Logs
+*.log
