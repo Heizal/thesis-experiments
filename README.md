@@ -54,8 +54,6 @@ flowchart TD
     E --> F[asr_report.csv]
 
     F --> G[visualizations/<br>plots]
-
-    H --> I[Failure Matrix +<br>Example Tables]
 ```
 
 -----
