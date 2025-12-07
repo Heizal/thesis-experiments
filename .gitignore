@@ -6,7 +6,7 @@ __pycache__/
 venv/
 
 # Experiment outputs (very large, DO NOT TRACK)
-results.jsonl
+results.json
 
 # Logs
 *.log
