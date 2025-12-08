@@ -184,4 +184,4 @@ All experiments can be re-run end-to-end to reproduce the thesis figures with id
 
 If you use this framework, please cite:
 
-> **Nagginda, P.H. (2025).** *A comparative analysis of prompt injection attacks in open-source large language models.* Undergraduate Thesis, CODE University Berlin.
+> **Nagginda, P.H. (2025).** *A comparative analysis of prompt injection attacks in open-source large language models.* Undergraduate Thesis, CODE University of Applied Sciences, Berlin.
