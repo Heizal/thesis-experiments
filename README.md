@@ -160,7 +160,6 @@ This produces:
   * Condition-wise performance curves
   * Attack vulnerability tables
   * Top-10 most severe failures
-  * (Optional) Failure-matrix diagrams
 
 Publication-ready figures are saved under `outputs/plots/`.
 
